@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "start:api": "json-server --watch api/db.json"
+    "start:api": "node api/server.js"
   },
   "dependencies": {
     "react": "^18.2.0",

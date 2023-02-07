@@ -5,3 +5,128 @@
   text-align: center;
 }
 
+.section__pokemon{
+  border: 1px solid black;
+  padding: 2rem 3rem;
+  margin-top: 1rem;
+}
+
+
+.section__pokemon label{
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+
+.section__pokemon-form{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.section__pokemon-form span:first-child{
+  margin-left: 1rem;
+  margin-right: 0.5rem;
+}
+
+.section__pokemon-form span:last-child{
+  margin-left: 1rem;
+}
+
+.section__pokemon .action-buttons{
+  padding-top: 2rem;
+  justify-content: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.section__pokemon .action-buttons button{
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section__pokemon .action-buttons button:first-child{
+  background-color:white;    
+}
+
+
+.section__pokemon .action-buttons button:first-child:hover{
+  background-color:#4FCEA2;
+    
+}
+
+.section__pokemon .action-buttons button:last-child{
+  background-color:white
+}
+
+.section__pokemon .action-buttons button:last-child:hover{
+  background-color:#F23558;
+}
+  
+
+.pokemon-table{
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.pokemon-table th,td{
+  border: 1px solid black;
+  padding: 1rem;
+ 
+}
+
+.pokemon-table td img{
+  height: 2rem;
+}
+
+tbody td button{
+  background-color: white;
+}
+
+tbody td button:first-child:hover{
+  background-color:#4FCEA2;
+
+}
+
+tbody td button:last-child:hover{
+  background-color:#F23558;
+
+}
+
+tbody td button img{
+  width: 1rem;
+}
+
+
+.search-pokemon{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 4rem;
+  margin-bottom: 2rem;
+}
+
+.search-pokemon label{
+  text-align: left;
+}
+.search-pokemon button{
+  justify-content: left;
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;;
+  gap: 1rem;
+  background-color: white;
+  justify-content: center;
+}
+
+.search-pokemon button img{
+  width: 1rem;
+  transform: rotate(45deg);
+}
+
+.search-pokemon button:hover{
+background-color: cornflowerblue;
+}

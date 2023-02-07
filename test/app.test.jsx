@@ -1,10 +1,16 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import App from "../src/App";
+import PokemonPage from "../src/pages/pokemon-page";
 
-test("Find text", () => {
-  const root = renderer.create(<App />).root;
-  const element = root.findAllByType("h1");
+describe("App", () => {
+  describe("When initialize", () => {
+    test("Should render the pokemon list component", () => {
+      const root = renderer.create(<App />).root;
 
-  expect(element[0].children[0]).toBe("Hello Pichincha");
+      const element = root.findByType(PokemonPage);
+
+      expect(element).toBeTruthy();
+    });
+  });
 });

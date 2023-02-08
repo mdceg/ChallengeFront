@@ -1,7 +1,8 @@
 import edit from "../assets/edit.svg";
 import trash from "../assets/delete.svg";
 
-const API_URL = "http://localhost:3000/pokemons";
+const API_URL =
+  "https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/pkm-msa-evaluation/pokemon";
 
 const PokemonList = ({ list, handleEdit, handleDelete }) => {
   const handleClickDelete = (id) => {
@@ -12,7 +13,6 @@ const PokemonList = ({ list, handleEdit, handleDelete }) => {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => response.json())
       .then(() => handleDelete(id))
       .catch((error) => {
         console.error("Error:", error);

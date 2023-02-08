@@ -61,7 +61,7 @@ button img {
   width: 1rem;
 }
 
-input {
+input[type="text"],
+input[type="search"] {
   padding: 0.5rem;
-  border-radius: 0.5rem;
 }

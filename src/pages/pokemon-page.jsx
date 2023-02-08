@@ -3,13 +3,17 @@ import PokemonForm from "../components/pokemon-form";
 import PokemonList from "../components/pokemon-list";
 import PokemonSearch from "../components/pokemon-search";
 
-const API_URL = "http://localhost:3000/pokemons";
+const API_URL =
+  "https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/pkm-msa-evaluation/pokemon?idAuthor=1";
 const DEFAULT_POKEMON = {
   id: 0,
   name: "",
+  image: "",
   attack: 0,
   defense: 0,
-  image: "",
+  hp: "",
+  type: "",
+  idAuthor: 1,
 };
 
 const PokemonPage = () => {
@@ -17,12 +21,22 @@ const PokemonPage = () => {
   const [showForm, setShowForm] = useState(false);
   const [pokemon, setPokemon] = useState(DEFAULT_POKEMON);
   const [search, setSearch] = useState("");
+  const [filteredList, setFilteredList] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_URL}?name_like=${search}`)
+    fetch(`${API_URL}`)
       .then((response) => response.json())
       .then((data) => setPokemonList(data));
-  }, [search]);
+  }, []);
+
+  useEffect(() => {
+    if (!search) return setFilteredList([...pokemonList]);
+    const searchUpper = search.toUpperCase();
+    const filtered = pokemonList.filter((p) =>
+      p.name.toUpperCase().includes(searchUpper)
+    );
+    setFilteredList(filtered);
+  }, [search, pokemonList]);
 
   const handleEdit = (pokemon) => {
     setPokemon(pokemon);
@@ -68,7 +82,7 @@ const PokemonPage = () => {
         search={search}
       />
       <PokemonList
-        list={pokemonList}
+        list={filteredList}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
       />

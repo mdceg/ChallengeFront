@@ -2,13 +2,18 @@ import { useEffect, useState } from "react";
 import save from "../assets/save.svg";
 import cancel from "../assets/x.svg";
 
-const API_URL = "http://localhost:3000/pokemons";
+const API_URL =
+  "https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/pkm-msa-evaluation/pokemon";
+
 const DEFAULT_POKEMON = {
   id: 0,
   name: "",
+  image: "",
   attack: 0,
   defense: 0,
-  image: "",
+  hp: "",
+  type: "",
+  idAuthor: 1,
 };
 
 const PokemonForm = ({ pokemon: p, handleCancel, onSuccess }) => {
@@ -52,7 +57,13 @@ const PokemonForm = ({ pokemon: p, handleCancel, onSuccess }) => {
       <form className="section__pokemon-form" onSubmit={handleSubmit}>
         <label>
           Nombre:
-          <input name="name" value={pokemon.name} onChange={handleChange} />
+          <input
+            type="text"
+            name="name"
+            value={pokemon.name}
+            onChange={handleChange}
+            placeholder="Nombre"
+          />
         </label>
         <label>
           Ataque:
@@ -67,7 +78,13 @@ const PokemonForm = ({ pokemon: p, handleCancel, onSuccess }) => {
         </label>
         <label>
           Imagen:
-          <input name="image" value={pokemon.image} onChange={handleChange} />
+          <input
+            type="text"
+            name="image"
+            value={pokemon.image}
+            onChange={handleChange}
+            placeholder="Imagen"
+          />
         </label>
 
         <label>

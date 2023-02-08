@@ -32,7 +32,7 @@ const PokemonList = ({ list, handleEdit, handleDelete }) => {
       </thead>
       <tbody>
         {list.map((pokemon) => (
-          <tr key={pokemon.id}>
+          <tr key={pokemon.id} role="listitem">
             <td>{pokemon.name}</td>
             <td>
               <img

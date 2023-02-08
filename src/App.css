@@ -10,6 +10,10 @@
   }
 }
 
+.pokemons h1 {
+  text-align: center;
+}
+
 .section__pokemon {
   border: 1px solid black;
   padding: 1rem;
@@ -19,6 +23,7 @@
 .section__pokemon h3 {
   margin: 0;
   padding-bottom: 1rem;
+  text-align: center;
 }
 
 .section__pokemon-form {
@@ -133,6 +138,10 @@
 .search-pokemon__input {
   display: flex;
   flex-direction: column;
+}
+
+.search-pokemon__input input {
+  background-image: url("assets/lookup.svg");
 }
 
 .search-pokemon button img {

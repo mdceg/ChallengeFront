@@ -26,7 +26,10 @@ const PokemonPage = () => {
   useEffect(() => {
     fetch(`${API_URL}`)
       .then((response) => response.json())
-      .then((data) => setPokemonList(data));
+      .then((data) => {
+        setPokemonList(data);
+        console.log("datita", data);
+      });
   }, []);
 
   useEffect(() => {
@@ -75,7 +78,8 @@ const PokemonPage = () => {
   };
 
   return (
-    <>
+    <div className="pokemons">
+      <h1>Pokemons</h1>
       <PokemonSearch
         onSearch={handleSearch}
         handleNew={handleNew}
@@ -93,7 +97,7 @@ const PokemonPage = () => {
           onSuccess={handleSuccess}
         />
       )}
-    </>
+    </div>
   );
 };
 

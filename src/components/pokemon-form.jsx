@@ -54,7 +54,11 @@ const PokemonForm = ({ pokemon: p, handleCancel, onSuccess }) => {
   return (
     <section className="section__pokemon">
       <h3>Nuevo Pokemon</h3>
-      <form className="section__pokemon-form" onSubmit={handleSubmit}>
+      <form
+        className="section__pokemon-form"
+        onSubmit={handleSubmit}
+        role="form"
+      >
         <label>
           Nombre:
           <input

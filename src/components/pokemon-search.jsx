@@ -9,8 +9,10 @@ const PokemonSearch = ({ search, handleNew, onSearch }) => {
   return (
     <section className="search-pokemon">
       <div className="search-pokemon__input">
-        <label>Listado de pokemon</label>
+        <label htmlFor="search">Listado de pokemon</label>
         <input
+          id="search"
+          aria-label="search"
           value={search}
           type="search"
           onChange={handleChange}

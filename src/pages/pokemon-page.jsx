@@ -26,10 +26,7 @@ const PokemonPage = () => {
   useEffect(() => {
     fetch(`${API_URL}`)
       .then((response) => response.json())
-      .then((data) => {
-        setPokemonList(data);
-        console.log("datita", data);
-      });
+      .then((data) => setPokemonList(data));
   }, []);
 
   useEffect(() => {

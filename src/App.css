@@ -12,6 +12,7 @@
 
 .pokemons h1 {
   text-align: center;
+  margin-top: 0;
 }
 
 .section__pokemon {
@@ -141,7 +142,7 @@
 }
 
 .search-pokemon__input input {
-  background-image: url("assets/lookup.svg");
+  background-image: url("/images/lookup.svg");
 }
 
 .search-pokemon button img {

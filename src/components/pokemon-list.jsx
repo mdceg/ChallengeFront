@@ -1,7 +1,24 @@
 import edit from "../assets/edit.svg";
 import trash from "../assets/delete.svg";
 
-const PokemonList = ({ list, handleEdit }) => {
+const API_URL = "http://localhost:3000/pokemons";
+
+const PokemonList = ({ list, handleEdit, handleDelete }) => {
+  const handleClickDelete = (id) => {
+    const url = `${API_URL}/${id}`;
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then(() => handleDelete(id))
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   return (
     <table className="pokemon-table">
       <thead>
@@ -26,10 +43,16 @@ const PokemonList = ({ list, handleEdit }) => {
             <td>{pokemon.attack}</td>
             <td>{pokemon.defense}</td>
             <td>
-              <button onClick={() => handleEdit(pokemon)}>
+              <button
+                onClick={() => handleEdit(pokemon)}
+                className="success action"
+              >
                 <img src={edit} />
               </button>
-              <button>
+              <button
+                onClick={() => handleClickDelete(pokemon.id)}
+                className="danger action"
+              >
                 <img src={trash} />
               </button>
             </td>

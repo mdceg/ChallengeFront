@@ -1,28 +1,23 @@
-import { useState } from "react";
 import plus from "../assets/x.svg";
 
-const PokemonSearch = (props) => {
-  const [searchValue, setSearchValue] = useState("");
-
+const PokemonSearch = ({ search, handleNew, onSearch }) => {
   const handleChange = (event) => {
-    const value = event.target.value;
-    setSearchValue(value);
-    props.onSearch(value);
+    const { value } = event.target;
+    onSearch(value);
   };
 
   return (
     <section className="search-pokemon">
-      <label>
-        Listado de pokemon
+      <div className="search-pokemon__input">
+        <label>Listado de pokemon</label>
         <input
-          name="name"
-          value={searchValue}
-          type="text"
+          value={search}
+          type="search"
           onChange={handleChange}
           placeholder="Buscar"
         />
-      </label>
-      <button onClick={props.handleNew}>
+      </div>
+      <button onClick={handleNew} className="info">
         <img src={plus} />
         Nuevo
       </button>

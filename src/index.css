@@ -4,6 +4,10 @@
   font-weight: 400;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -15,10 +19,10 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  /* display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100vh; */
 }
 
 h1 {
@@ -27,15 +31,37 @@ h1 {
 }
 
 button {
-  border-radius: 4px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  border: 1px solid gray;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: white;
 }
 
+button.success:hover {
+  background-color: #4fcea2;
+}
 
+button.danger:hover {
+  background-color: #f23558;
+}
 
+button.info:hover {
+  background-color: cornflowerblue;
+}
+
+button img {
+  width: 1rem;
+}
+
+input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}

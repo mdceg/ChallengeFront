@@ -43,15 +43,41 @@ const PokemonPage = () => {
     setSearch(value);
   };
 
+  const handleDelete = (id) => {
+    const list = pokemonList.filter((element) => element.id !== id);
+    setPokemonList(list);
+  };
+
+  const handleSuccess = (pokemon) => {
+    const index = pokemonList.findIndex((element) => element.id === pokemon.id);
+    const list = [...pokemonList];
+    if (index >= 0) {
+      list[index] = pokemon;
+      setPokemonList(list);
+    } else {
+      setPokemonList([...list, pokemon]);
+    }
+    setShowForm(false);
+  };
+
   return (
     <>
       <PokemonSearch
         onSearch={handleSearch}
         handleNew={handleNew}
-      ></PokemonSearch>
-      <PokemonList list={pokemonList} handleEdit={handleEdit} />
+        search={search}
+      />
+      <PokemonList
+        list={pokemonList}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
       {showForm && (
-        <PokemonForm pokemon={pokemon} handleCancel={handleCancel} />
+        <PokemonForm
+          pokemon={pokemon}
+          handleCancel={handleCancel}
+          onSuccess={handleSuccess}
+        />
       )}
     </>
   );

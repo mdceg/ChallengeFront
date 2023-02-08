@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import save from "../assets/save.svg";
 import cancel from "../assets/x.svg";
 
+const API_URL = "http://localhost:3000/pokemons";
 const DEFAULT_POKEMON = {
   id: 0,
   name: "",
@@ -10,7 +11,7 @@ const DEFAULT_POKEMON = {
   image: "",
 };
 
-const PokemonForm = ({ pokemon: p, handleCancel }) => {
+const PokemonForm = ({ pokemon: p, handleCancel, onSuccess }) => {
   const [pokemon, setPokemon] = useState(DEFAULT_POKEMON);
 
   useEffect(() => {
@@ -25,10 +26,30 @@ const PokemonForm = ({ pokemon: p, handleCancel }) => {
     }));
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const apiMethod = pokemon.id ? "PUT" : "POST";
+    const url = apiMethod === "PUT" ? `${API_URL}/${pokemon.id}` : API_URL;
+    fetch(url, {
+      method: apiMethod,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(pokemon),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        onSuccess(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   return (
     <section className="section__pokemon">
-      <h2>Nuevo Pokemon</h2>
-      <form className="section__pokemon-form">
+      <h3>Nuevo Pokemon</h3>
+      <form className="section__pokemon-form" onSubmit={handleSubmit}>
         <label>
           Nombre:
           <input name="name" value={pokemon.name} onChange={handleChange} />
@@ -60,17 +81,17 @@ const PokemonForm = ({ pokemon: p, handleCancel }) => {
           />
           <span>100</span>
         </label>
+        <div className="action-buttons">
+          <button type="submit" className="success">
+            <img src={save} width="20px" />
+            Guardar
+          </button>
+          <button onClick={handleCancel} className="danger">
+            <img src={cancel} width="20px" />
+            Cancelar
+          </button>
+        </div>
       </form>
-      <div className="action-buttons">
-        <button>
-          <img src={save} width="20px" />
-          Guardar
-        </button>
-        <button onClick={handleCancel}>
-          <img src={cancel} width="20px" />
-          Cancelar
-        </button>
-      </div>
     </section>
   );
 };
